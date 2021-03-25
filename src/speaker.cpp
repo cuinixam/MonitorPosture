@@ -2,10 +2,10 @@
 #include "mcu.h"
 
 Speaker::Speaker() {
-    init();
+    setup();
 }
 
-void Speaker::init(void) {
+void Speaker::setup(void) {
    pinMode(PIN_SPEAKER_OUT, OUTPUT);
 }
 

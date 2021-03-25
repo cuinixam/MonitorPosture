@@ -6,6 +6,6 @@ class Radar {
    private:
       long time_filt_prev;
       
-      void init(void);
+      void setup(void);
       long filterLowPass(long value, long prev_value);
 };

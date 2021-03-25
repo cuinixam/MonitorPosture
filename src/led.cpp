@@ -1,20 +1,25 @@
 #include "led.h"
-#include "mcu.h"
 
-Led::Led(/* args */)
+Led::Led() {
+   Led(LED_BUILTIN);
+}
+
+Led::Led(uint8_t ioPin)
 {
+    pin = ioPin;
     blink_counter = 0;
     blink_status = true;
     timestamp = 0;
+    pinMode(pin, OUTPUT);
 }
 
 Led::~Led()
 {
 }
 
-void Led::loop_10ms() {
+void Led::loop(unsigned int period) {
     blink_counter++;
-   if (blink_counter > 100)
+   if (blink_counter > period)
    {
       timestamp = millis();
       blink_counter = 0;
@@ -31,10 +36,18 @@ void Led::loop_10ms() {
    }
 }
 
+void Led::loop_10ms() {
+   loop(100);
+}
+
+void Led::loop_100ms() {
+   loop(10);
+}
+
 void Led::on() {
-   digitalWrite(LED_BUILTIN, HIGH);
+   digitalWrite(pin, HIGH);
 }
 
 void Led::off() {
-   digitalWrite(LED_BUILTIN, LOW);
+   digitalWrite(pin, LOW);
 }

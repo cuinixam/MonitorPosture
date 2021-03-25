@@ -3,6 +3,7 @@
 
 #include <Arduino.h>
 #include "hw_config.h"
+#include "types.h"
 
 #define EnableInterrupts() sei()
 #define DisableInterrupts() cli()
